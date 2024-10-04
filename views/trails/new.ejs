@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Trail</title>
+</head>
+<body>
+    <h1>Add New Trail</h1>
+    <form action="/trails" method="POST">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="trail[name]" required>
+        <label for="location">Location:</label>
+        <input type="text" id="location" name="trail[location]" required>
+        <label for="difficulty">Difficulty:</label>
+        <input type="text" id="difficulty" name="trail[difficulty]" required>
+        <label for="length">Length (mi):</label>
+        <input type="number" id="length" name="trail[length]" required>
+        <label for="description">Description:</label>
+        <textarea id="description" name="trail[descirpiton]" required></textarea>
+            <button type="submit">Add Trail</button>
+    </form>
+</body>
+</html>

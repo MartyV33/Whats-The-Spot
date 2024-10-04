@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trails</title>
+</head>
+<body>
+    <h1>All Trails</h1>
+    <ul>
+        <% trails.forEach(trail => { %>
+        <li><a href="/trails/<%= trail._id %>"></a></li>
+        <% }) %>
+    </ul>
+    <a href="/trails/new">Add New Trail</a>
+</body>
+</html>
