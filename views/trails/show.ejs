@@ -4,17 +4,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><%= trail.name %></title>
+    <link rel="stylesheet" href="/css/styles.css">
 </head>
-<body>
-    <h1><%= trail.name %></h1>
-    <p>Location: <%= trail.location %></p>
-    <p>Dicciculty: <%= trail.difficulty %></p>
-    <p>Length: <%= trail.length %></p>
-    <p>Description: <%= trail.description %></p>
-    <a href="/trails/<%= trial._id %>/edit">Edit</a>
-    <form action="/trails/<% trail._id %>?_method=DELETE" method="POST">
-        <button type="submit">Delete</button>
-    </form>
-    <a href="/trails">Back to Trails</a>
+<body class="trails-page">
+    <header>
+        <nav>
+            <a href="/">Home</a>
+            <a href="/trails" class="user-button">All Trails</a>
+            <a href="/user" class="user-button">User</a>
+        </nav>
+    </header>
+    <% if (trail.image) { %>
+        <img src="<% trail.image %>" alt="<%= trail.name %>">
+    <% } %>
+    <div class="container">
+        <h1 class="page-header"><%= trail.name %></h1>
+        <div class="trail-details">
+            <p>Location: <%= trail.location %></p>
+            <p>Difficulty: <%= trail.difficulty %></p>
+            <p>Length: <%= trail.length %> miles</p>
+            <p>Description: <%= trail.description %></p>
+        </div>
+        <div class="trail-actions">
+            <a href="/trails/<%= trail._id %>/edit" class="button">Edit</a>
+            <form action="/trails/<%= trail._id %>?_method=DELETE" method="POST" class="delete-form">
+                <button type="submit" class="button delete-button">Delete</button>
+            </form>
+        </div>
+    </div>
+    <footer>
+        <a href="/trails">Back to Trails</a>
+        <a href="https://github.com/MartyV33/Whats-The-Spot.git" target="_blank">GitHub</a>
+        <a href="/README" target="_blank">README</a>
+    </footer>
 </body>
 </html>

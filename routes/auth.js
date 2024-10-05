@@ -3,7 +3,6 @@ const router = express.Router();
 const User = require('../models/User');
 const bcrypt = require('bcrypt');
 const passport = require('passport');
-const { trusted } = require('mongoose');
 
 // signup route
 router.get('/signup', (req, res) => {
@@ -12,7 +11,7 @@ router.get('/signup', (req, res) => {
 
 router.post('/signup', async (req, res) => {
     try {
-        const { name, email, passoword } = req.body;
+        const { name, email, password } = req.body;
         const user = new User({ name, email, password });
         await user.save();
         res.redirect('/login');
@@ -27,9 +26,9 @@ router.get('/login', (req, res) => {
 });
 
 router.post('/login', passport.authenticate('local', {
-    successRedirect: '/',
+    successRedirect: '/trails',
     failureRedirect: '/login',
-    failureFlash: trusted
+    failureFlash: true
 }));
 
 //Logout route

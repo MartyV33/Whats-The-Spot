@@ -3,15 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Trails</title>
+    <title>All Trails</title>
+    <link rel="stylesheet" href="/css/styles.css">
 </head>
-<body>
-    <h1>All Trails</h1>
-    <ul>
+<body class="trails-page">
+    <header>
+        <nav>
+            <a href="/">Home</a>
+            <a href="/user" class="user-button">User</a>
+        </nav>
+    </header>
+    <div class="container">
+        <h1 class="page-header">All Trails</h1>
         <% trails.forEach(trail => { %>
-        <li><a href="/trails/<%= trail._id %>"></a></li>
+            <div class="trail">
+                <% if (trail.image) { %>
+                    <img src="<%= trail.image %>" alt="<%= trail.name %>">
+                <% } %>
+                <h2><a href="/trails/<%= trail._id %>"><%= trail.name %></a></h2>
+            </div>
         <% }) %>
-    </ul>
-    <a href="/trails/new">Add New Trail</a>
+        <button class="add-trail-button" onclick="location.href='/trails/new'">Add New Trail</button>
+        <div class="trail-list">
+            <% trails.forEach(trail => { %>
+                <div class="trail-item">
+                    <h2><a href="/trails/<%= trail._id %>"><%= trail.name %></a></h2>
+                    <p><strong>Location:</strong> <%= trail.location %></p>
+                    <p><strong>Difficulty:</strong> <%= trail.difficulty %></p>
+                    <p><strong>Length:</strong> <%= trail.length %></p>
+                    <p><strong>Description:</strong> <%= trail.description %></p>
+                </div>
+            <% }) %>
+        </div>
+    </div>
+    <footer>
+        <a href="https://github.com/MartyV33/Whats-The-Spot.git" target="_blank">GitHub</a>
+        <a href="/README" target="_blank">README</a> 
+    </footer>
 </body>
 </html>

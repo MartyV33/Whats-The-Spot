@@ -4,21 +4,37 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit Trail</title>
+    <link rel="stylesheet" href="/css/styles.css">
 </head>
-<body>
-    <h1>Edit Trail</h1>
-    <form action="/trails/<%= trail._id>?_method=PUT" method="POST">
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="trail[name]" value="<%= trail.name %>" required>
-        <label for="location">Location:</label>
-        <input type="text" id="location" name="trail[location]" value="<%= trail.location %>" required>
-        <label for="difficulty">Difficulty:</label>
-        <input type="text" id="difficulty" name="trail[difficulty]" value="<%= trail.difficulty %>" required>
-        <label for="length">Length (mi):</label>
-        <input type="number" id="length" name="trail[length]" value="<%= trial.length %>" required>
-        <label for="description">Description:</label>
-        <textarea id="description" name="trail[description]" required><%= trail.description %></textarea>
+<body class="trails-page">
+    <header>
+        <nav>
+            <a href="/">Home</a>
+            <a href="/trails" class="user-button">All Trails</a>
+            <a href="/user" class="user-button">User</a>
+        </nav>
+    </header>
+    <div class="container">
+        <h1 class="page-header">Edit Trail</h1>
+        <form action="/trails/<%= trail._id %>?_method=PUT" method="POST" enctype="multipart/form-data">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="trail[name]" value="<%= trail.name %>" required>
+            <label for="location">Location:</label>
+            <input type="text" id="location" name="trail[location]" value="<%= trail.location %>" required>
+            <label for="difficulty">Difficulty:</label>
+            <input type="text" id="difficulty" name="trail[difficulty]" value="<%= trail.difficulty %>" required>
+            <label for="length">Length (mi):</label>
+            <input type="number" id="length" name="trail[length]" value="<%= trail.length %>" required>
+            <label for="description">Description:</label>
+            <textarea id="description" name="trail[description]" required><%= trail.description %></textarea>
+            <label for="image">Image:</label>
+            <input type="file" id="image" name="image">
             <button type="submit">Update Trail</button>
-    </form>
+        </form>
+    </div>
+    <footer>
+        <a href="https://github.com/MartyV33/Whats-The-Spot.git" target="_blank">GitHub</a>
+        <a href="/README" target="_blank">README</a> 
+    </footer>
 </body>
 </html>

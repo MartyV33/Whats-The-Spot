@@ -3,27 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>What's The Spot!</title>
+    <title>User Profile</title>
     <link rel="stylesheet" href="/css/styles.css">
 </head>
-<body>
+<body class="user-page">
     <header>
         <nav>
             <a href="/">Home</a>
+            <a href="/trails" class="user-button">All Trails</a>
+            <a href="/user" class="user-button">User</a>
         </nav>
-        <h1>What's The Spot!</h1>
-        <nav>
-            <a href="/user">User</a>
-        </nav>
-    </header>    
+    </header>
     <div class="container">
-        <img src="/Logo.png" alt="What's The Spot Logo">
-        <div>
-            <button onclick="location.href='/login'">Login</button>
-            <button onclick="location.href='/signup'">Sign Up</button>
-        </div>
+        <h1 class="page-header">User Profile</h1>
+        <p><strong>Name:</strong> <%= user.name %></p>
+        <p><strong>Email:</strong> <%= user.email %></p>
     </div>
     <footer>
+        <a href="/trails">Back to Trails</a>
         <a href="https://github.com/MartyV33/Whats-The-Spot.git" target="_blank">GitHub</a>
         <a href="/README" target="_blank">README</a>
     </footer>

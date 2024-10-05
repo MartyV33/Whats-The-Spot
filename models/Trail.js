@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
 
 const trailSchema = new mongoose.Schema({
     name: {
@@ -21,7 +22,7 @@ const trailSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    images: [String],
+    images: String,
     user_id: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User',
@@ -30,4 +31,4 @@ const trailSchema = new mongoose.Schema({
 });
 
 const Trail = mongoose.model('Trail', trailSchema);
-module.exports = trail;
+module.exports = Trail;
