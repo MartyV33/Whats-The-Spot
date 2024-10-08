@@ -22,7 +22,7 @@ const trailSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    images: String,
+    image: String,
     user_id: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User',

@@ -14,12 +14,12 @@
             <a href="/user" class="user-button">User</a>
         </nav>
     </header>
-    <% if (trail.image) { %>
-        <img src="<% trail.image %>" alt="<%= trail.name %>">
-    <% } %>
     <div class="container">
         <h1 class="page-header"><%= trail.name %></h1>
         <div class="trail-details">
+            <% if (trail.image) { %>
+                <img src="<%= trail.image %>" alt="<%= trail.name %>">
+            <% } %>
             <p>Location: <%= trail.location %></p>
             <p>Difficulty: <%= trail.difficulty %></p>
             <p>Length: <%= trail.length %> miles</p>
@@ -29,6 +29,9 @@
             <a href="/trails/<%= trail._id %>/edit" class="button">Edit</a>
             <form action="/trails/<%= trail._id %>?_method=DELETE" method="POST" class="delete-form">
                 <button type="submit" class="button delete-button">Delete</button>
+            </form>
+            <form action="/user/save-trail/<%=trail._id %>" method="POST">
+                <button type="submit" class="button save-button">Save Trail</button>
             </form>
         </div>
     </div>

@@ -21,6 +21,7 @@ const upload = multer({ storage: storage });
 router.get('/', async (req, res) => {
     try {
         const trails = await Trail.find({});
+        trails.forEach(trail => console.log('Trail Image Path:', trail.image));
         res.render('trails/index', { trails });
     } catch (error) {
         res.status(500).send('Error fetching trails');
@@ -51,8 +52,9 @@ router.get('/:id', async (req, res) => {
     try {
         const trail = await
 Trail.findById(req.params.id).populate('user_id');
+console.log('Trail Image Path:', trail.image);
         res.render('trails/show', { trail });            
-    } catch (erro) {
+    } catch (error) {
         res.status(500).send('Error fetching trail details');
     }
 });
@@ -70,7 +72,9 @@ router.get('/:id/edit', async (req, res) => {
 //Update Route
 router.put('/:id', isAuthenticated, upload.single('image'), async (req, res) => {
     try {
-        const trail = await trail.findById(req.params.id);
+        console.log('Request Body:', req.body);
+        console.log('Uploaded File:,', req.file);
+        const trail = await Trail.findById(req.params.id);
         if (req.file) {
             trail.image = `/uploads/${req.file.filename}`;
         }
@@ -78,6 +82,7 @@ router.put('/:id', isAuthenticated, upload.single('image'), async (req, res) => 
         await trail.save();
         res.redirect(`/trails/${req.params.id}`);
     } catch (error) {
+        console.error(error);
         res.status(400).send('Error updating trail');
     }
 });

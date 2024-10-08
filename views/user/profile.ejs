@@ -18,6 +18,28 @@
         <h1 class="page-header">User Profile</h1>
         <p><strong>Name:</strong> <%= user.name %></p>
         <p><strong>Email:</strong> <%= user.email %></p>
+        <h2>Saved Trails</h2>
+        <div class="trail-list">
+            <% user.savedTrails.forEach(trail => { %>
+                <div class="trail-item">
+                    <div class="trail-container">
+                        <% if (trail.image) { %>
+                            <img src="<%= trail.image %>" alt="<%= trail.name %>" class="trail-image">
+                        <% } %>
+                        <div class="trail-details">
+                            <h2><a href="/trails/<%= trail._id %>"><%= trail.name %></a></h2>
+                            <p><strong>Location:</strong> <%= trail.location %></p>
+                            <p><strong>Difficulty:</strong> <%= trail.difficulty %></p>
+                            <p><strong>Length:</strong> <%= trail.length %></p>
+                            <p><strong>Description:</strong> <%= trail.description %></p>
+                            <form action="/user/delete-trail/<%= trail._id %>" method="POST" class="delete-form">
+                                <button type="submit" class="button delete-button">Delete</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            <% }) %>
+        </div>
     </div>
     <footer>
         <a href="/trails">Back to Trails</a>

@@ -14,7 +14,8 @@ const userSchema = new mongoose.Schema({
     password: {
         type: String,
         required: true
-    }
+    },
+    savedTrails: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Trail' }]
 });
 
 // Hashing the password before saving the user

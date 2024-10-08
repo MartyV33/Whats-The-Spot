@@ -1,13 +1,15 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: Georgia, sans-serif;
+    font-size: 1.3em;
     margin: 0;
     padding: 0;
-    background-color: #7CB342;
+    background-color: #2f492f;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    overflow-y: auto;
+    overflow-x:hidden;
 }
 
 header {
@@ -20,8 +22,19 @@ header {
     width: 100%;
     position: fixed;
     top: 0;
+    z-index: 1000;
+    border-bottom: 1px solid whitesmoke;
 }
 header h1 {
+    font-size: 1.5em;
+    color: tan;
+    text-shadow: 2px 2px 4px rgba(0,0,0, 0.2);
+    border: 2px solid tan;
+    padding: 10px 20px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    text-align: center;
+    background-color: #254117;
     margin: 0;
 }
 
@@ -39,7 +52,12 @@ nav a:hover {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 100px;
+    width:100%;
+    margin: 0 auto;
+    padding: 20px;
+    flex-grow: 1;
+    overflow-y: auto;
+    padding-top: 60px;
 }
 
 .container img {
@@ -71,6 +89,7 @@ footer {
     position: fixed;
     width: 100%;
     bottom: 0;
+    border-top: 1px solid whitesmoke;
 }
 
 /* Trails page styles */
@@ -85,17 +104,18 @@ footer {
 
 .trails-page .page-header {
     font-size: 2.5em;
-    color: darkolivegreen;
+    color: tan;
+    background-color: darkolivegreen;
     text-shadow: 2px 2px 4px rgba(0,0,0, 0.2);
-    border: 2px solid darkolivegreen;
+    border: 3px solid tan;
     padding: 10px 20px;
-    border-radius: 5px;
+    border-radius: 10px;
     margin-bottom: 20px;
 }
 
 .trails-page .add-trail-button {
-    background-color: darkgreen;
-    color:#fff;
+    background-color: tan;
+    color:black;
     border:none;
     padding: 10px 20px;
     margin-bottom: 20px;
@@ -114,7 +134,7 @@ footer {
 }
 
 .trails-page .trail-item {
-    background-color: #7CB342;
+    background-color: tan ;
     border: 1px solid #ddd;
     border-radius: 5px;
     padding: 20px;
@@ -171,7 +191,7 @@ footer {
     align-items: flex-start;
     width: 100%;
     max-width: 800px;
-    background-color: whitesmoke;
+    background-color: #7CB342;
     padding: 20px;
     border-radius: 5px;
     box-shadow: 0 2px 4px rbga(0,0,0, 0.1);
@@ -185,6 +205,15 @@ footer {
 
 .trail-details p strong {
     color:#333;
+}
+
+.trail-details img {
+    max-width: 100%;
+    max-height: 400px;
+    width: auto;
+    height: auto;
+    display: block;
+    margin: 0 auto 20px;
 }
 
 /* Trail Actions Styles*/
@@ -222,7 +251,73 @@ footer {
     background-color: whitesmoke;
     color:#333;
     border: none;
-    padding: 10px 20px 10px 20px;
+    padding: 10px 20px;
     margin: 20px;
     cursor: pointer;
+}
+
+header {
+    position: fixed;
+    z-index: 1000;
+    width: 100%;
+}
+
+.add-trail-button {
+    background-color: darkgreen;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    margin-bottom: 20px;
+    cursor: pointer;
+    z-index: 1;
+}
+
+.trail-item p {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: normal;
+}
+
+.logo {
+    max-width: 400px;
+    height: auto;
+    display: block;
+    margin: 100px auto 1px auto;
+}
+
+.trail-container {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 16px;
+    margin-bottom: 16px;
+    background-color: tan;
+    max-width: 825px;
+}
+
+.trail-image {
+    max-width: 100%;
+    max-height: auto;
+    margin-right: 16px;
+    border-radius: 8px;
+}
+
+.trail-details {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: tan;
+    padding: 16px;
+    border-radius: 8px;
+    margin-top: 10px;
+}
+
+.trail-details h2 {
+    margin: 0;
+    font-size: 1.5em;
+}
+
+.trail-details p {
+    margin: 4px 0;
 }

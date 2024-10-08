@@ -11,6 +11,37 @@ const User = require('./models/User');
 const bcrypt = require('bcrypt');
 require('dotenv').config();
 const userRoutes = require('./routes/user');
+const multer = require('multer');
+
+// Storage engine
+const storage = multer.diskStorage({
+    destination: './public/uploads/',
+    filename: function(req, file, cb) {
+        cb(null, Date.now() + path.extname(file.originalname));
+    }
+});
+
+// Initialize Upload
+const upload = multer({
+    storage: storage,
+    limits: { fileSize: 10000000 },
+    fileFilter: function(req, file, cb) {
+        checkFileType(file, cb);
+    }
+}).single('trailImage');
+
+// check file type
+function checkFileType(file, cb) {
+    const filetypes = /jpeg|jpg|png|gif/;
+    const extname = filetypes.test(path.extname(file.originalname).toLowerCase());
+    const mimetype = filetypes.test(file.mimetype);
+
+    if (extname && mimetype) {
+        return cb(null, true);
+    } else {
+        cb('Error: Images Only!');
+    }
+}
 
 // middleware
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -69,7 +100,19 @@ app.use('/user', userRoutes);
 app.get('/', (req, res) => {
     res.render('index');
 });
-
+app.post('/upload', (req, res) => {
+    upload(req, res, (err) => {
+        if (err) {
+            res.render('index', {msg: err });
+        } else {
+            if (req.file == undefined) {
+                res.render('index', {msg: 'No file selected!' });
+            } else {
+                res.render('index', {msg: 'File uploaded!', file: `uploads/${req.file.filename}` });
+            }
+        }
+    });
+});
 
 // Starting the server
 const PORT = process.env.PORT || 1650;

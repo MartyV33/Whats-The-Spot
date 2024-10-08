@@ -15,18 +15,13 @@
     </header>
     <div class="container">
         <h1 class="page-header">All Trails</h1>
-        <% trails.forEach(trail => { %>
-            <div class="trail">
-                <% if (trail.image) { %>
-                    <img src="<%= trail.image %>" alt="<%= trail.name %>">
-                <% } %>
-                <h2><a href="/trails/<%= trail._id %>"><%= trail.name %></a></h2>
-            </div>
-        <% }) %>
         <button class="add-trail-button" onclick="location.href='/trails/new'">Add New Trail</button>
         <div class="trail-list">
             <% trails.forEach(trail => { %>
                 <div class="trail-item">
+                    <% if (trail.image) { %>
+                        <img src="<%= trail.image %>" alt="<%= trail.name %>">
+                    <% } %>
                     <h2><a href="/trails/<%= trail._id %>"><%= trail.name %></a></h2>
                     <p><strong>Location:</strong> <%= trail.location %></p>
                     <p><strong>Difficulty:</strong> <%= trail.difficulty %></p>
