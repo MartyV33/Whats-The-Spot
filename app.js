@@ -12,6 +12,7 @@ const bcrypt = require('bcrypt');
 require('dotenv').config();
 const userRoutes = require('./routes/user');
 const multer = require('multer');
+const MongoStore = require('connect-mongo');
 
 // Storage engine
 const storage = multer.diskStorage({
@@ -46,9 +47,13 @@ function checkFileType(file, cb) {
 // middleware
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(session({
-    secret: process.env.SESSION_SECRET,
+    secret: process.env.SESSION_SECRET || 'brownie_verdoza_090898',
     resave: false,
-    saveUninitialized: false
+    saveUninitialized: false,
+    store: MongoStore.create({
+        mongoUrl: process.env.MONGODB_URI,
+        collectionName: 'sessions'
+    })
 }));
 app.use(methodOverride('_method'));
 app.use(express.static('public'));
