@@ -27,7 +27,8 @@ router.post('/delete-trail/:id', isAuthenticated, async (req, res) => {
         console.error(err);
         res.redirect('/');
     }
-})
+});
+
 // User Profile Route
 router.get('/', isAuthenticated, async (req, res) => {
     try {

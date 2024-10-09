@@ -54,6 +54,7 @@ nav a:hover {
     align-items: center;
     width:100%;
     margin: 0 auto;
+    margin-bottom: 20px;
     padding: 20px;
     flex-grow: 1;
     overflow-y: auto;
@@ -228,7 +229,7 @@ footer {
     display: inline-block;
     padding: 10px 20px;
     margin-right: 10px;
-    background-color: greenyellow;
+    background-color: blue;
     color: #fff;
     text-decoration:none;
     border-radius: 5px;
@@ -240,20 +241,24 @@ footer {
 }
 
 .trail-action .delete-button {
-    background-color: greenyellow;
+    background-color: darkolivegreen;
 }
 
 .trail-actions .delete-button:hover {
-    background-color: #008000;
+    background-color: gray;
 }
 
 .button {
     background-color: whitesmoke;
-    color:#333;
+    color: #333;
     border: none;
+    border-radius: 5px;
     padding: 10px 20px;
-    margin: 20px;
+    margin: 10px;
+    margin-top: 25px;
     cursor: pointer;
+    text-decoration: none;
+    font-size: 1em;
 }
 
 header {
@@ -320,4 +325,44 @@ header {
 
 .trail-details p {
     margin: 4px 0;
+}
+
+.delete-button {
+    background-color: whitesmoke;
+    color: black;
+    border:#333;
+    padding: 10px 20px;
+    margin-top: 1px;
+    margin-bottom: 25px;
+    margin-right: auto;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.delete-button:hover {
+    background-color: gray;
+}
+
+.edit-button {
+    background-color: whitesmoke;
+    color: black;
+    border:#333;
+    padding: 10px 20px;
+    margin-top: 20px;
+    margin-bottom: 1px;
+    margin-left: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 1em;
+}
+
+.edit-button:hover {
+    background-color: gray;
+}
+
+.profile-container {
+    display: flex;
+    align-items: center;
+    background-color: tan;
 }

@@ -26,13 +26,14 @@
             <p>Description: <%= trail.description %></p>
         </div>
         <div class="trail-actions">
-            <a href="/trails/<%= trail._id %>/edit" class="button">Edit</a>
-            <form action="/trails/<%= trail._id %>?_method=DELETE" method="POST" class="delete-form">
-                <button type="submit" class="button delete-button">Delete</button>
-            </form>
+            <a href="/trails/<%= trail._id %>/edit" class="edit-button">Edit Trail</a>
             <form action="/user/save-trail/<%=trail._id %>" method="POST">
                 <button type="submit" class="button save-button">Save Trail</button>
             </form>
+            <form action="/trails/<%= trail._id %>?_method=DELETE" method="POST" class="delete-form">
+                <button type="submit" class="button delete-button">Delete Trail</button>
+            </form>
+
         </div>
     </div>
     <footer>
